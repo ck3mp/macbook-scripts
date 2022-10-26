@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "macbook-scripts"
+version = "0.1.0"
+description = ""
+authors = ["Chris Kemp <chris.kemp@balfourbeatty.com>"]
+readme = "README.md"
+packages = [{include = "macbook_scripts"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+pylama = "^8.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
