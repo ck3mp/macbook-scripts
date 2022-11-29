@@ -13,11 +13,6 @@ mkdir -p /Users/chris/Development/"$PARENT_FOLDER"
 cd /Users/chris/Development/"$PARENT_FOLDER" || exit
 git clone "$1"
 
-# Poetry
-cd "$FOLDER" || exit
-poetry init --name "$FOLDER" -n --dev-dependency black --dev-dependency pylama
-poetry install --no-root
-
 # Setup environment file for VS Code
 
 echo "Setting up Workspace for $PARENT_FOLDER/$FOLDER"
@@ -34,9 +29,9 @@ cat >"$WORKSPACE_FILE" <<-EOM
 	    }
 	  ],
 	  "settings": {
-	    "python.pythonPath": ".venv/bin/python",
+	    "python.defaultInterpreterPath": "/opt/homebrew/anaconda3/envs/$PARENT_FOLDER/bin/python",
 	    "python.terminal.activateEnvInCurrentTerminal": false,
-	    "python.terminal.activateEnvironment": false,
+	    "python.terminal.activateEnvironment": true,
 	    "python.formatting.provider": "black",
 	    "editor.codeActionsOnSave": {
 	      "source.organizeImports": true
@@ -44,9 +39,6 @@ cat >"$WORKSPACE_FILE" <<-EOM
 	    "[python]": {
 	      "editor.formatOnPaste": false,
 	      "editor.formatOnSaveMode": "file"
-	    },
-	    "terminal.integrated.env.osx": {
-	      "ZSH_INIT_COMMAND": "poetry shell"
 	    }
 	  }
 	}
